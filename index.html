@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klik Laundry | Laundry Profesional Cikarang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --blue-900: #0a1628;
+            --blue-800: #0f1f3a;
+            --blue-700: #15294d;
+            --blue-600: #1a3360;
+            --blue-500: #1e3d73;
+            --blue-400: #2b5c9e;
+            --blue-300: #3b82c4;
+            --blue-200: #60a5e0;
+            --blue-100: #93c5f5;
+            --blue-50: #dbeafe;
+            --red-600: #c62828;
+            --red-500: #d32f2f;
+            --red-400: #e53935;
+            --red-300: #ef5350;
+            --red-200: #f44336;
+            --red-100: #ff5252;
+            --gold: #f0c060;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --soft-white: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --text-dark: #1a1a2e;
+            --text-medium: #3a3a4e;
+            --text-light: #6b7280;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.15);
+            --shadow-glow-blue: 0 0 40px rgba(59, 130, 196, 0.3);
+            --shadow-glow-red: 0 0 40px rgba(229, 57, 53, 0.25);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--soft-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============ ANIMATED BACKGROUND PARTICLES ============ */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            30% {
+                opacity: 0.5;
+            }
+            70% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-120px) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatUpSlow {
+            0% {
+                transform: translateY(105vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.35;
+            }
+            85% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-150px) translateX(60px) scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 10px 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            border-radius: 10px;
+            transition: var(--transition-smooth);
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.2));
+        }
+
+        .nav-logo:hover img {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--red-300);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 6px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-400);
+            border-radius: 2px;
+            transition: width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--red-500);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-bounce);
+            box-shadow: 0 6px 24px rgba(211, 47, 47, 0.4);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-cta:hover {
+            background: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(211, 47, 47, 0.55);
+        }
+
+        /* Mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: var(--transition-smooth);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--blue-900) 0%, var(--blue-700) 30%, var(--blue-600) 55%, #1a2845 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(229, 57, 53, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlowPulse 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 196, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlowPulse 6s ease-in-out 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heroGlowPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.25);
+                opacity: 1;
+            }
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            animation: patternShift 20s linear infinite;
+        }
+
+        @keyframes patternShift {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(60px, 60px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 30px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--red-200);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInDown 0.8s ease-out;
+            backdrop-filter: blur(10px);
+            margin-bottom: 24px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            animation: fadeInDown 0.8s ease-out 0.15s both;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--red-400), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 36px;
+            animation: fadeInDown 0.8s ease-out 0.3s both;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInDown 0.8s ease-out 0.45s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--red-500);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.45);
+        }
+        .btn-primary:hover {
+            background: #b71c1c;
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(211, 47, 47, 0.55);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-laundry-icon {
+            font-size: 4rem;
+            animation: bounceIcon 2s ease-in-out infinite;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        @keyframes bounceIcon {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-18px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollBounce 2s ease-in-out infinite;
+            z-index: 3;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .hero-scroll-indicator i {
+            font-size: 1.4rem;
+        }
+
+        @keyframes scrollBounce {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(14px);
+            }
+        }
+
+        /* ============ SECTION STYLES ============ */
+        .section {
+            padding: 90px 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            background: rgba(211, 47, 47, 0.1);
+            color: var(--red-500);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .section-desc {
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* ============ SERVICES GRID ============ */
+        .services-section {
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(59, 130, 196, 0.2);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--blue-400), var(--red-400));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            border-radius: 0 0 6px 6px;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+        }
+        .service-card:nth-child(1) .service-card-icon {
+            background: var(--blue-400);
+            box-shadow: 0 8px 24px rgba(43, 92, 158, 0.35);
+        }
+        .service-card:nth-child(2) .service-card-icon {
+            background: var(--red-400);
+            box-shadow: 0 8px 24px rgba(229, 57, 53, 0.35);
+        }
+        .service-card:nth-child(3) .service-card-icon {
+            background: linear-gradient(135deg, var(--blue-500), var(--red-400));
+            box-shadow: 0 8px 24px rgba(30, 61, 115, 0.35);
+        }
+        .service-card:hover .service-card-icon {
+            transform: rotate(-8deg) scale(1.1);
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--blue-900);
+        }
+        .service-card p,
+        .service-card ul {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-card ul li {
+            padding: 5px 0;
+            padding-left: 22px;
+            position: relative;
+        }
+        .service-card ul li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--red-400);
+            font-size: 0.7rem;
+            top: 7px;
+        }
+        .service-card .price-tag {
+            display: inline-block;
+            background: var(--blue-50);
+            color: var(--blue-700);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* ============ WHY US SECTION ============ */
+        .why-us-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
+            position: relative;
+            z-index: 1;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .why-us-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-bounce);
+            position: relative;
+        }
+        .why-us-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .why-us-card .why-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            transition: var(--transition-smooth);
+        }
+        .why-us-card:nth-child(1) .why-icon {
+            background: #4caf50;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+        .why-us-card:nth-child(2) .why-icon {
+            background: #ff9800;
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+        }
+        .why-us-card:nth-child(3) .why-icon {
+            background: var(--blue-400);
+            box-shadow: 0 8px 20px rgba(43, 92, 158, 0.3);
+        }
+        .why-us-card:nth-child(4) .why-icon {
+            background: #9c27b0;
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
+        }
+        .why-us-card:nth-child(5) .why-icon {
+            background: #00bcd4;
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+        }
+        .why-us-card:nth-child(6) .why-icon {
+            background: var(--red-400);
+            box-shadow: 0 8px 20px rgba(229, 57, 53, 0.3);
+        }
+        .why-us-card:hover .why-icon {
+            transform: rotateY(180deg);
+        }
+        .why-us-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        .why-us-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ============ CTA SECTION ============ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-900) 0%, #0d1f3c 50%, #1a2845 100%);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(229, 57, 53, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: ctaPulse 4s ease-in-out infinite;
+        }
+        @keyframes ctaPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.9;
+            }
+        }
+        .cta-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .cta-inner p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cta-buttons .btn-primary {
+            font-size: 1.05rem;
+            padding: 16px 32px;
+        }
+        .cta-buttons .btn-outline {
+            font-size: 1.05rem;
+            padding: 16px 32px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--blue-900);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        .footer strong {
+            color: #fff;
+        }
+
+        /* ============ ANIMATIONS ON SCROLL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ FLOATING WA BUTTON ============ */
+        .floating-wa {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+            text-decoration: none;
+            transition: var(--transition-bounce);
+            animation: waPulse 2.5s ease-in-out infinite;
+        }
+        .floating-wa:hover {
+            transform: scale(1.15);
+            box-shadow: 0 14px 40px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+        @keyframes waPulse {
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 50px rgba(37, 211, 102, 0.75), 0 0 0 20px rgba(37, 211, 102, 0.08);
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(10, 22, 40, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 30px 40px;
+                gap: 24px;
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .hero-content {
+                padding: 30px 16px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-us-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .floating-wa {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .nav-cta {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .nav-logo-text {
+                font-size: 1.2rem;
+            }
+            .nav-logo img {
+                height: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PARTICLES ==================== -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <img src="laundrylogo.jpg" alt="Klik Laundry Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <!-- Hanya satu span fallback, jika gambar gagal akan ditampilkan -->
+            <span class="nav-logo-text" style="display:none;">Klik<span>Laundry</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#why-us">Keunggulan</a></li>
+            <li><a href="#cta">Pesan</a></li>
+            <li><a href="https://wa.me/6281234567890" target="_blank" class="nav-cta"><i class="fab fa-whatsapp"></i> Chat WA</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <span class="hero-laundry-icon">🧺</span>
+            <span class="hero-badge">✨ Laundry Profesional ✨</span>
+            <h1 class="hero-title">
+                Hidup Lebih Mudah<br>dengan <span class="highlight">Klik Laundry</span>
+            </h1>
+            <p class="hero-subtitle">
+                Layanan laundry profesional area <strong>Cikarang</strong> & sekitarnya. Antar jemput gratis, bersih wangi, cepat & terpercaya.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    <i class="fas fa-arrow-down"></i> Lihat Layanan
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section class="section services-section" id="services">
+        <div class="section-header reveal">
+            <span class="section-tag">Layanan Kami</span>
+            <h2 class="section-title">Pilih Layanan Laundry Anda</h2>
+            <p class="section-desc">Klik Laundry hadir untuk memudahkan hidup Anda dengan berbagai pilihan layanan profesional.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Card 1: Self Service -->
+            <div class="service-card reveal">
+                <div class="service-card-icon"><i class="fas fa-hand-sparkles"></i></div>
+                <h3>Laundry Self Service</h3>
+                <p>Anda bisa mencuci sendiri dengan mesin cuci premium kami. Cocok untuk Anda yang ingin menghemat dan punya waktu luang.</p>
+                <span class="price-tag">💰 Mulai dari Rp 15.000</span>
+            </div>
+            <!-- Card 2: Drop Off Satuan Premium -->
+            <div class="service-card reveal">
+                <div class="service-card-icon"><i class="fas fa-crown"></i></div>
+                <h3>Laundry Drop Off — Satuan (Premium)</h3>
+                <ul>
+                    <li>Jas, baju kerja, kebaya</li>
+                    <li>Sepatu, tas, topi</li>
+                    <li>Stroller bayi, bed cover, sprei set</li>
+                    <li>Dan item spesial lainnya</li>
+                </ul>
+                <span class="price-tag">👑 Perawatan khusus & teliti</span>
+            </div>
+            <!-- Card 3: Drop Off per Loading & Meteran -->
+            <div class="service-card reveal">
+                <div class="service-card-icon"><i class="fas fa-weight-scale"></i></div>
+                <h3>Laundry Drop Off — Per Loading (kg)</h3>
+                <p>Pakaian sehari-hari Anda dicuci bersih, wangi, dan rapi.</p>
+                <hr style="border-color:#e5e7eb; margin:8px 0;">
+                <h3 style="font-size:1.2rem;">Laundry Meteran</h3>
+                <p>Karpet, gordyn, vitrage — diukur per meter, hasil maksimal.</p>
+                <span class="price-tag">📏 Harga bersahabat</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHY US SECTION ==================== -->
+    <section class="section why-us-section" id="why-us">
+        <div class="section-header reveal">
+            <span class="section-tag">Mengapa Kami?</span>
+            <h2 class="section-title">Mengapa Pilih Klik Laundry?</h2>
+            <p class="section-desc">Kami berkomitmen memberikan pelayanan terbaik untuk pakaian Anda.</p>
+        </div>
+        <div class="why-us-grid">
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-sparkles"></i></div>
+                <h4>Bersih & Wangi</h4>
+                <p>Deterjen premium impor untuk hasil maksimal & wangi tahan lama.</p>
+            </div>
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Cepat & Tepat</h4>
+                <p>Estimasi waktu akurat, pakaian siap tepat sesuai jadwal.</p>
+            </div>
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-truck-fast"></i></div>
+                <h4>Antar Jemput Gratis</h4>
+                <p>Pickup & delivery gratis khusus laundry satuan area Jababeka & Lippo Cikarang.</p>
+            </div>
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-tags"></i></div>
+                <h4>Harga Terjangkau</h4>
+                <p>Kualitas premium dengan harga bersahabat, ramah di kantong.</p>
+            </div>
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+                <h4>Aman & Terpercaya</h4>
+                <p>Pakaian Anda ditangani dengan penuh tanggung jawab & kehati-hatian.</p>
+            </div>
+            <div class="why-us-card reveal">
+                <div class="why-icon"><i class="fas fa-thumbs-up"></i></div>
+                <h4>Order Mudah</h4>
+                <p>Pesan via WhatsApp, gampang dan cepat. Tanpa ribet!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="section cta-section" id="cta">
+        <div class="cta-inner reveal">
+            <h2>🧺 Siap Laundry Sekarang?</h2>
+            <p>
+                Hubungi kami via WhatsApp dan dapatkan <strong>pickup gratis</strong> hari ini.<br>
+                Pakaian bersih, hidup lebih mudah!
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> 📱 Chat WhatsApp
+                </a>
+                <a href="https://maps.google.com/?q=Cikarang" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-location-dot"></i> 📍 Lihat Lokasi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <p>&copy; 2026 <strong>Klik Laundry</strong> — Laundry Profesional Cikarang. Made with ❤️</p>
+    </footer>
+
+    <!-- ==================== FLOATING WHATSAPP ==================== -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="floating-wa" title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // ============ NAVBAR SCROLL EFFECT ============
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============ MOBILE HAMBURGER ============
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        // Close nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ============ SCROLL REVEAL ============
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ============ PARTICLES GENERATOR ============
+        const particlesContainer = document.getElementById('particlesContainer');
+        const colors = ['#3b82c4', '#60a5e0', '#93c5f5', '#e53935', '#ef5350', '#f0c060', '#ffffff',
+        '#ff8a80'];
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 8 + 3;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.animationDuration = Math.random() * 14 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            if (Math.random() > 0.6) {
+                particle.style.animationName = 'floatUpSlow';
+            }
+            particlesContainer.appendChild(particle);
+
+            // Remove after animation
+            const duration = parseFloat(particle.style.animationDuration) + parseFloat(particle.style
+                .animationDelay);
+            setTimeout(() => {
+                if (particle.parentNode) particle.parentNode.removeChild(particle);
+            }, duration * 1000 + 500);
+        }
+
+        // Create initial particles
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createParticle, i * 200);
+        }
+        // Keep creating
+        setInterval(createParticle, 1800);
+
+        // ============ SMOOTH SCROLL FOR ALL ANCHOR LINKS ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('✨ Klik Laundry — Website siap! Selamat menikmati desain aesthetic-nya 🧺');
+    </script>
+</body>
+</html>
